@@ -1,11 +1,12 @@
 from flask import Flask
+import json
 app = Flask(__name__)
+# ==== Controllers ====
+# ==== End Controllers ====
 
-
-@app.route("/")
-def hello():
-    return "<h1>Hello World</h1>"
-
+@app.route('/')
+def index():
+    return "index"
 
 if __name__ == "__main__":
     # Only for debugging while developing
