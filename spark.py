@@ -1,4 +1,5 @@
 from lib.spark.Test import Test
+from lib.spark.Controller import Controller
 import sys
 
 
@@ -14,7 +15,8 @@ class Spark(object):
     def __init__(self, command):
         """Initialize options and execute command"""
         options = {
-            'test': Test
+            'test': Test,
+            'controller': Controller,
         }
 
         comm = command.split(':')

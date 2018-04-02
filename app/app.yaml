@@ -1,0 +1,15 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /.*
+  script: main.app
+env_variables:
+    CLOUDSQL_CONNECTION_NAME: serverlessmicroservice:us-central1:serverlessproducts
+    CLOUDSQL_USER: root
+    CLOUDSQL_PASSWORD: Milo8Lots0P!zzas
+
+libraries:
+- name: MySQLdb
+  version: "latest"
