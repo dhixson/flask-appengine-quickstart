@@ -1,23 +1,34 @@
-from flask import Flask
+from flask import Flask, request
+from types import ModuleType
+import jwt
 import json
-# ==== Controller Imports ====
-from app.controllers.Users_controller import Users_controller
-from app.controllers.Products_controller import Products_controller as Products
-from app.controllers.Items_controller import Items_controller as Items
-from app.controllers.Inventories_controller import Inventories_controller as Inventories
-# ==== End Controller Imports ====
+import re
+import src.controllers as controllers
+
+# Declare Flask Application
 app = Flask(__name__)
-# ==== Controllers ====
-app.register_blueprint(Users_controller, url_prefix='/users')
-app.register_blueprint(Products, url_prefix='/products')
-app.register_blueprint(Items, url_prefix='/items')
-app.register_blueprint(Inventories, url_prefix='/inventories')
-# ==== End Controllers ====
+# Load Controllers and Routes
+for mod in controllers.__dict__.values():
+    if type(mod) == ModuleType:
+        app.register_blueprint(mod.controller, url_prefix=mod.prefix)
 
-
+# Declare Application Default Routes
 @app.route('/')
 def index():
-    return "index"
+    return "Inventory and Products API"
+
+@app.before_request
+def before_request():
+    """Default Middleware."""
+    try:
+        header = request.headers.get('Authorization')
+        regex = r"(?:Bearer\s*)(\S+)\b"
+        match = re.match(regex, header)
+        data = jwt.decode(match.group(1), 'GgfkXtJ2ofNhwBv85WfbiEdFTFn5704A', algorithms=['HS256'])
+        request.environ['X_CP_TENANT'] = data['tenant_id']
+        request.environ['X_CP_ROLE'] = data['role']
+    except:
+        return "Unauthorized", 401
 
 if __name__ == "__main__":
     # Only for debugging while developing

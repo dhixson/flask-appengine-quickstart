@@ -14,7 +14,8 @@ class Controller(object):
     """Run unit tests in the tests directory"""
 
     def __init__(self, command):
-        self.path = os.path.dirname(os.path.realpath(__file__)) + '/../../app/controllers/'
+        self.package_path = os.path.dirname(os.path.realpath(__file__)) + '/../../app/src/controllers/__init__.py'
+        self.path = os.path.dirname(os.path.realpath(__file__)) + '/../../app/src/controllers/'
         """Gather command and execute the proper test function"""
         if command is None:
             print "Error: no controller command given"
@@ -39,12 +40,10 @@ class Controller(object):
         with open(self.path + name + "_controller"'.py', 'w') as w:
             w.write(template)
         newlines = ""
-        for line in fileinput.input(self.path + '../main.py'):
+        for line in fileinput.input(self.package_path):
             if "# ==== End Controller Imports ====" in line:
-                newlines += "from controllers.%s_controller import %s_controller as %s\n" % (3*(name,))
-            if "# ==== End Controllers ====" in line:
-                newlines += "app.register_blueprint(%s, url_prefix='/%s')\n" % (name, name.lower())
-            newlines += line
-        with open(self.path + '../main.py', 'w') as f:
+                newlines += "import %s_controller" % name
+                newlines += "\n# ==== End Controller Imports ===="
+        with open(self.package_path, 'w') as f:
             f.write(newlines)
         print "Controller %s created" % name

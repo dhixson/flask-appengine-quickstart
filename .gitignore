@@ -1,3 +1,5 @@
 *.pyc
 */__pycache__
 app/config/env.ini
+env/*
+app.yaml

@@ -1,8 +1,10 @@
 from flask import Blueprint, abort
 
-<_name_>_controller = Blueprint('<_name_>', __name__)
+prefix = '/' + '<_name_>'
 
-@<_name_>_controller.route('/')
+controller = Blueprint('<_name_>', __name__)
+
+@controller.route('/')
 def index():
     try:
         return "<_name_> Controller Index"
