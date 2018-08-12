@@ -58,3 +58,11 @@ class Test(object):
         print tests
         test_file = name.strip('.py') + '.py'
         subprocess.call(['python', self.path + tests[test_file]])
+
+    @staticmethod
+    def options():
+        """Print options for help information"""
+        print "###Tests###"
+        print "test:create => create a test file"
+        print "test:single <test_name> => run a single test by name"
+        print "test:all => run all tests in the tests directory\n"

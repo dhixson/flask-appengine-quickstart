@@ -6,10 +6,9 @@ handlers:
 - url: /.*
   script: main.app
 env_variables:
-    CLOUDSQL_CONNECTION_NAME: serverlessmicroservice:us-central1:serverlessproducts
-    CLOUDSQL_USER: root
-    CLOUDSQL_PASSWORD: Milo8Lots0P!zzas
-
+    GCLOUD_PROJECT: serverlessmicroservice
+    SPANNER_INSTANCE: test-instance
+    SPANNER_DB_NAME: example-db
 libraries:
-- name: MySQLdb
-  version: "latest"
+- name: pycrypto
+  version: "2.6"

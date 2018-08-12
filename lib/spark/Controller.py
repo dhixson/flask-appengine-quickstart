@@ -47,3 +47,10 @@ class Controller(object):
         with open(self.package_path, 'w') as f:
             f.write(newlines)
         print "Controller %s created" % name
+
+    @staticmethod
+    def options():
+        """Display command options"""
+        print "###Controllers###"
+        print "controller:create <name> => creates a new controller and registers its blueprint"
+        print ""

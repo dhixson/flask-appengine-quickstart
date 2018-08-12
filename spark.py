@@ -31,4 +31,8 @@ class Spark(object):
         options[comm[0]](comm[1])
 
 if __name__ == '__main__':
-    Spark(sys.argv[1])
+    if len(sys.argv) < 2:
+        Test.options()
+        Controller.options()
+    else:
+        Spark(sys.argv[1])
