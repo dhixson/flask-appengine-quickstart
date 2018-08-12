@@ -3,3 +3,5 @@
 app/config/env.ini
 env/*
 app.yaml
+app/env/*
+app/lib/*
