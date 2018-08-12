@@ -19,7 +19,9 @@ Spark is a command line helper tool while developing an application in flask
 ## Currently Available Commands
 ### Tests
 `test:create`: Creates a new test file
+
 `test:single <name>`: Runs a single test file by name
+
 `test:all`: Runs all test files in the `tests` directory
 ### Controllers
 `controller:create`: Creates a new controller and register's its blueprint and url prefix
