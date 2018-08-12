@@ -12,22 +12,22 @@ This repo provides a quickstart for running flask on a local environment, or in 
 * `python main.py`
 * The application should now be available at a given port
 ---
-#Spark
+# Spark
 Spark is a command line helper tool while developing an application in flask
-##Usage
+## Usage
 `python spark.py <group>:<command> <*argument*>`
-##Currently Available Commands
-###Tests
+## Currently Available Commands
+### Tests
 `test:create`: Creates a new test file
 `test:single <name>`: Runs a single test file by name
 `test:all`: Runs all test files in the `tests` directory
-###Controllers
+### Controllers
 `controller:create`: Creates a new controller and register's its blueprint and url prefix
-##Commands on the Roadmap
-###Models
+## Commands on the Roadmap
+### Models
 Ability to create models
-###Migrations
+### Migrations
 Ability to create, execute, and rollback database migrations
-###Seeds
+### Seeds
 Ability to create and execute database seeders
 
